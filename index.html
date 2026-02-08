@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Propose Day Hani ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ff5f9e,#ffc371);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    width:330px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    z-index:10;
+}
+
+h2{color:#ff2e63;}
+
+button{
+    padding:10px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    margin:8px;
+}
+
+#yesBtn{background:#ff2e63;color:white;}
+#noBtn{background:#ddd;}
+
+#message{
+    display:none;
+    margin-top:15px;
+    font-size:15px;
+}
+
+#gif{
+    display:none;
+    width:220px;
+    margin-top:15px;
+}
+
+/* hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    to{transform:translateY(-120vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Happy Propose Day Hani ❤️</h2>
+
+    <p>Will you be mine forever? 💍</p>
+    <p><em>I don’t know about the future, but I know I want you in mine ❤️</em></p>
+
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 🙈</button>
+
+    <div id="message">
+        <strong>Congratulations 🎉</strong><br>
+        You've just unlocked unlimited care, smiles, and bad jokes 😜<br>
+        Thank you for choosing me ❤️
+    </div>
+
+    <img id="gif" src="dancing.gif">
+</div>
+
+<audio id="music">
+    <source src="newlight.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn  = document.getElementById("noBtn");
+const music  = document.getElementById("music");
+
+yesBtn.addEventListener("click", () => {
+    document.getElementById("message").style.display="block";
+    document.getElementById("gif").style.display="block";
+
+    noBtn.style.display="none"; // NO hata do after YES
+
+    music.currentTime = 0;
+    music.play();
+
+    setInterval(createHeart, 250);
+});
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo(){
+    noBtn.innerText="Think again 😏";
+    noBtn.style.position="absolute";
+    noBtn.style.left=Math.random()*70+"%";
+    noBtn.style.top=Math.random()*70+"%";
+}
+
+function createHeart(){
+    const h=document.createElement("div");
+    h.className="heart";
+    const hearts=["❤️","🖤","🤍","💖","💘","💝","💞","💜","💙","💚","🧡","💛","💕"];
+    h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*25+15)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),9000);
+}
+</script>
+
+</body>
+</html>
